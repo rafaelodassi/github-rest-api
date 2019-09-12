@@ -43,10 +43,10 @@
 			outline: none;
 
 			&:hover, &:active, &:focus {
-				color: darken($primary-color, 5%);
+				color: darken($primary-color, 10%);
 
 				& ~ svg {
-					fill: darken($primary-color, 5%);
+					fill: darken($primary-color, 10%);
 				}
 			}
 		}

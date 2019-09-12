@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import logo from '../../assets/img/logo.png';
 import { ReactComponent as IconSearch } from '../../assets/icons/search.svg';
 import { ReactComponent as IconClose } from '../../assets/icons/close.svg';
 
+import { UserActions } from '../../store';
+
 import './header.scss';
 
-const Header = () => {
+const Header = (props) => {
+	const { apiGetUsers } = props;
 	const [valueSearch, setValueSearch] = useState("");
 
 	const changeValueSearch = (e) => {
 		setValueSearch(e.target.value || "");
+		apiGetUsers({ name: e.target.value || "" });
 	}
 
 	const clearValueSearch = () => {
@@ -34,4 +40,16 @@ const Header = () => {
 	);
 }
 
-export default Header;
+const mapStateToProps = state => {
+	const { user } = state;
+
+	return {
+		data: user.data,
+		loading: user.loading,
+		error: user.error
+	};
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators(UserActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
