@@ -1,9 +1,9 @@
 import { createActions, createReducer } from 'reduxsauce';
 
 export const { Types, Creators } = createActions({
-	apiGetUsers: ['params'],
-	successGetUsers: [],
-	errorGetUsers: []
+	apiSearchUsers: ['params'],
+	successSearchUsers: [],
+	errorSearchUsers: []
 });
 
 const initialState = {
@@ -12,8 +12,8 @@ const initialState = {
 	error: false
 };
 
-/*GET USERS*/
-const apiGetUsers = (state = initialState, action) => {
+/*SEARCH USERS*/
+const apiSearchUsers = (state = initialState, action) => {
 	return {
 		...state,
 		loading: true,
@@ -21,14 +21,14 @@ const apiGetUsers = (state = initialState, action) => {
 	}
 };
 
-const successGetUsers = (state = initialState, action) => ({
+const successSearchUsers = (state = initialState, action) => ({
 	...state,
-	data: action.response,
+	data: action.response.items,
 	loading: false,
 	error: false
 });
 
-const errorGetUsers = (state = initialState, action) => ({
+const errorSearchUsers = (state = initialState, action) => ({
 	...state,
 	data: [],
 	loading: false,
@@ -36,7 +36,7 @@ const errorGetUsers = (state = initialState, action) => ({
 });
 
 export default createReducer(initialState, {
-	[Types.API_GET_USERS]: apiGetUsers,
-	[Types.SUCCESS_GET_USERS]: successGetUsers,
-	[Types.ERROR_GET_USERS]: errorGetUsers
+	[Types.API_SEARCH_USERS]: apiSearchUsers,
+	[Types.SUCCESS_SEARCH_USERS]: successSearchUsers,
+	[Types.ERROR_SEARCH_USERS]: errorSearchUsers
 });

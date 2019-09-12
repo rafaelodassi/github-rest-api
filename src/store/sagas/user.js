@@ -1,32 +1,36 @@
-import { takeLatest, put, call } from 'redux-saga/effects';
+import { takeLatest, put, call, debounce } from 'redux-saga/effects';
 
 import { Types as UserTypes } from '../../store/ducks/user';
 
 import Http from '../../shared/services/base';
+import { serialize } from '../../shared/utils/serialize';
 
-/*GET USERS*/
-function getUsersApi(params) {
-    return Http.get(`/users/${params.name}`);
+/*SEARCH USERS*/
+function searchUsersApi(params) {
+	if (params)
+		return Http.get(`/search/users?${serialize(params)}`);
+	else
+		return Http.get(`/users`);
 }
 
-function* getUsers(action) {
+function* searchUsers(action) {
     try {
-        const response = yield call(getUsersApi.bind(this, action.params));
+        const response = yield call(searchUsersApi.bind(this, action.params));
 
         yield put({
-            type: UserTypes.SUCCESS_GET_USERS,
+            type: UserTypes.SUCCESS_SEARCH_USERS,
             response: response.data
         });
-        return "teste"
     }
     catch (err) {
         yield put({
-            type: UserTypes.ERROR_GET_USERS,
+            type: UserTypes.ERROR_SEARCH_USERS,
             err
         });
     }
 }
 
-export function* getUsersSaga() {
-    yield takeLatest(UserTypes.API_GET_USERS, getUsers);
+export function* searchUsersSaga() {
+	// yield debounce(500, UserTypes.API_SEARCH_USERS, searchUsers);
+	yield takeLatest(UserTypes.API_SEARCH_USERS, searchUsers);
 }

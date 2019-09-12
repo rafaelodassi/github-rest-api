@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -10,13 +10,16 @@ import { UserActions } from '../../store';
 
 import './header.scss';
 
-const Header = (props) => {
-	const { apiGetUsers } = props;
+const Header = ({ apiSearchUsers }) => {
 	const [valueSearch, setValueSearch] = useState("");
 
 	const changeValueSearch = (e) => {
-		setValueSearch(e.target.value || "");
-		apiGetUsers({ name: e.target.value || "" });
+		const value = e.target.value || "";
+
+		setValueSearch(value);
+
+		if (value.length >= 3)
+			apiSearchUsers({ q: value });
 	}
 
 	const clearValueSearch = () => {
