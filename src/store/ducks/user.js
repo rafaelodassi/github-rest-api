@@ -16,6 +16,7 @@ const initialState = {
 const apiSearchUsers = (state = initialState, action) => {
 	return {
 		...state,
+		data: [],
 		loading: true,
 		error: false
 	}
@@ -23,7 +24,7 @@ const apiSearchUsers = (state = initialState, action) => {
 
 const successSearchUsers = (state = initialState, action) => ({
 	...state,
-	data: action.response.items,
+	data: action.response.items || action.response,
 	loading: false,
 	error: false
 });

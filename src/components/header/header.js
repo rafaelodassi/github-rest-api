@@ -13,13 +13,16 @@ import './header.scss';
 const Header = ({ apiSearchUsers }) => {
 	const [valueSearch, setValueSearch] = useState("");
 
+	useEffect(() => {
+		if (valueSearch.length >= 3)
+			apiSearchUsers({ q: valueSearch });
+		else if (valueSearch.length === 0)
+			apiSearchUsers();
+	}, [valueSearch]);
+
 	const changeValueSearch = (e) => {
 		const value = e.target.value || "";
-
 		setValueSearch(value);
-
-		if (value.length >= 3)
-			apiSearchUsers({ q: value });
 	}
 
 	const clearValueSearch = () => {

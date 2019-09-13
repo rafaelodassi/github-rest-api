@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 
 import { UserActions } from '../../store';
 
+import ErrorState from '../errorState/errorState';
+import Loader from '../loader/loader';
+
 import './userList.scss';
 
 const UserList = ({ apiSearchUsers, data, loading, error }) => {
@@ -15,9 +18,27 @@ const UserList = ({ apiSearchUsers, data, loading, error }) => {
 		console.log(data, loading, error);
 	});
 
+	if (error)
+		return (<ErrorState text={error} />)
+
+	if (loading)
+		return (<Loader />)
+
 	return (
 		<div className="userList">
-			asas
+			<div className="container-user-list">
+				{data.map((user, index) => {
+					return (
+						<div key={index} className="card-container">
+							<div className="card">
+								<div className="avatar" style={{ backgroundImage: `url(${user.avatar_url})` }}></div>
+								<span>{user.login}</span>
+								<span>{user.login}</span>
+							</div>
+						</div>
+					)
+				})}
+			</div>
 		</div>
 	);
 }
