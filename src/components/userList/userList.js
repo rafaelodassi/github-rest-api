@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 
 import { UserActions } from '../../store';
 
-import ErrorState from '../errorState/errorState';
+import TemplateState from '../templateState/templateState';
 import Loader from '../loader/loader';
+
+import notFoundState from '../../assets/img/not_found_state.svg';
 
 import './userList.scss';
 
@@ -19,10 +21,13 @@ const UserList = ({ apiSearchUsers, data, loading, error }) => {
 	});
 
 	if (error)
-		return (<ErrorState text={error} />)
+		return <TemplateState text={error} type="error" />;
 
-	if (loading)
-		return (<Loader />)
+	if (loading || !data)
+		return <Loader />;
+
+	if (data.length === 0)
+		return <TemplateState img={notFoundState} text={"Não encontramos ninguém por aqui com o nome xxx"} />;
 
 	return (
 		<div className="userList">

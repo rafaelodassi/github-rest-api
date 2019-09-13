@@ -7,7 +7,7 @@ export const { Types, Creators } = createActions({
 });
 
 const initialState = {
-	data: [],
+	data: null,
 	loading: false,
 	error: false
 };
@@ -16,7 +16,7 @@ const initialState = {
 const apiSearchUsers = (state = initialState, action) => {
 	return {
 		...state,
-		data: [],
+		data: null,
 		loading: true,
 		error: false
 	}
@@ -31,7 +31,7 @@ const successSearchUsers = (state = initialState, action) => ({
 
 const errorSearchUsers = (state = initialState, action) => ({
 	...state,
-	data: [],
+	data: null,
 	loading: false,
 	error: action.err
 });
