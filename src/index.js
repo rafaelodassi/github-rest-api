@@ -6,7 +6,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import configureStore, { history } from './store/configureStore';
 
 import Header from './components/header/header';
-import UserList from './components/userList/userList';
+import UserList from './pages/userList/userList';
+import UserDetails from './pages/userDetails/userDetails';
 
 import './index.scss';
 
@@ -19,10 +20,10 @@ ReactDOM.render(
         <ConnectedRouter history={history}>
       		<>
 			  	<Header />
-				<UserList />
 				<Switch>
-					<Route exact path="/" render={() => (<div>Match</div>)} />
-					<Route render={() => (<div>Miss</div>)} />
+					<Route exact path="/" render={() => <UserList />} />
+					<Route path="/user/:id" render={() => <UserDetails />} />
+					<Route render={() => (<div>404</div>)} />
 				</Switch>
       		</>
     	</ConnectedRouter>

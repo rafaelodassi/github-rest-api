@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { UserActions } from '../../store';
 
-import TemplateState from '../templateState/templateState';
-import Loader from '../loader/loader';
+import TemplateState from '../../components/templateState/templateState';
+import Loader from '../../components/loader/loader';
 
 import notFoundState from '../../assets/img/not_found_state.svg';
 
@@ -34,13 +35,15 @@ const UserList = ({ apiSearchUsers, data, loading, error }) => {
 			<div className="container-user-list">
 				{data.map((user, index) => {
 					return (
-						<div key={index} className="card-container">
-							<div className="card">
-								<div className="avatar" style={{ backgroundImage: `url(${user.avatar_url})` }}></div>
-								<span>{user.login}</span>
-								<span>{user.login}</span>
+						<Link key={index} to={`/user/${user.id}`}>
+							<div className="card-container">
+								<div className="card">
+									<div className="avatar" style={{ backgroundImage: `url(${user.avatar_url})` }}></div>
+									<span>{user.login}</span>
+									<span>{user.login}</span>
+								</div>
 							</div>
-						</div>
+						</Link>
 					)
 				})}
 			</div>
