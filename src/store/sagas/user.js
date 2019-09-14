@@ -34,3 +34,29 @@ export function* searchUsersSaga() {
 	// yield debounce(500, UserTypes.API_SEARCH_USERS, searchUsers);
 	yield takeLatest(UserTypes.API_SEARCH_USERS, searchUsers);
 }
+
+/*GET USER BY LOGIN*/
+function getUserByLoginApi(login) {
+	return Http.get(`/users/${login}`);
+}
+
+function* getUserByLogin(action) {
+    try {
+        const response = yield call(getUserByLoginApi.bind(this, action.login));
+
+        yield put({
+            type: UserTypes.SUCCESS_GET_USER_BY_LOGIN,
+            response: response.data
+        });
+    }
+    catch (err) {
+        yield put({
+            type: UserTypes.ERROR_GET_USER_BY_LOGIN,
+            err
+        });
+    }
+}
+
+export function* getUserByLoginSaga() {
+	yield takeLatest(UserTypes.API_GET_USER_BY_LOGIN, getUserByLogin);
+}

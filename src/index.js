@@ -21,9 +21,9 @@ ReactDOM.render(
       		<>
 			  	<Header />
 				<Switch>
-					<Route exact path="/" render={() => <UserList />} />
-					<Route path="/user/:id" render={() => <UserDetails />} />
-					<Route render={() => (<div>404</div>)} />
+					<Route exact path="/" render={props => <UserList match={props.match} />} />
+					<Route path="/user/:login" render={props => <UserDetails match={props.match} />} />
+					<Route render={props => (<div>404</div>)} />
 				</Switch>
       		</>
     	</ConnectedRouter>

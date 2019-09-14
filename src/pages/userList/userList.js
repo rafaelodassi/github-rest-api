@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { push } from 'connected-react-router';
 
 import { UserActions } from '../../store';
 
@@ -12,38 +12,38 @@ import notFoundState from '../../assets/img/not_found_state.svg';
 
 import './userList.scss';
 
-const UserList = ({ apiSearchUsers, data, loading, error }) => {
+const UserList = ({ apiSearchUsers, resetDataUserList, push, dataUserList, loading, error }) => {
 	useEffect(() => {
 		apiSearchUsers();
+
+		return () => resetDataUserList();
 	}, []);
 
-	useEffect(() => {
-		console.log(data, loading, error);
-	});
+	const goToUserDetails = (userLogin) => {
+		push(`/user/${userLogin}`);
+	}
 
 	if (error)
 		return <TemplateState text={error} type="error" />;
 
-	if (loading || !data)
+	if (loading || !dataUserList)
 		return <Loader />;
 
-	if (data.length === 0)
+	if (dataUserList.length === 0)
 		return <TemplateState img={notFoundState} text={"Não encontramos ninguém por aqui com o nome xxx"} />;
 
 	return (
 		<div className="userList">
 			<div className="container-user-list">
-				{data.map((user, index) => {
+				{dataUserList.map((user, index) => {
 					return (
-						<Link key={index} to={`/user/${user.id}`}>
-							<div className="card-container">
-								<div className="card">
-									<div className="avatar" style={{ backgroundImage: `url(${user.avatar_url})` }}></div>
-									<span>{user.login}</span>
-									<span>{user.login}</span>
-								</div>
+						<div key={index} className="card-container" onClick={goToUserDetails.bind(this, user.login)}>
+							<div className="card">
+								<div className="avatar" style={{ backgroundImage: `url(${user.avatar_url})` }}></div>
+								<span>{user.login}</span>
+								<span>{user.login}</span>
 							</div>
-						</Link>
+						</div>
 					)
 				})}
 			</div>
@@ -55,12 +55,12 @@ const mapStateToProps = state => {
 	const { user } = state;
 
 	return {
-		data: user.data,
+		dataUserList: user.dataUserList,
 		loading: user.loading,
 		error: user.error
 	};
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators(UserActions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ ...UserActions, push }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
