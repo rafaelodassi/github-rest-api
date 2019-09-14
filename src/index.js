@@ -1,57 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// import { createBrowserHistory } from 'history';
-// import { routerMiddleware, connectRouter } from 'connected-react-router';
-
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-// import { createLogger } from 'redux-logger';
-import reducer from './store/ducks';
-import rootSaga from './store/sagas';
+import { Route, Switch } from 'react-router';
+import { ConnectedRouter } from 'connected-react-router';
+import configureStore, { history } from './store/configureStore';
 
-import App from './app/app';
+import Header from './components/header/header';
+import UserList from './components/userList/userList';
 
 import './index.scss';
 
-// const history = createBrowserHistory({
-//     basename: process.env.PUBLIC_URL
-// });
-
-const sagaMiddleware = createSagaMiddleware();
-
-const middleware = [
-    // routerMiddleware(history),
-    sagaMiddleware
-];
-
-const initialState = {
-    // intl: {
-    //     locale: 'pt',
-    //     messages: {
-    //         'teste1': 'teste1'
-    //     }
-    // }
-};
-
-// if (process.env.NODE_ENV !== 'production') {
-//     middleware.push(createLogger());
-// }
-
-const store = createStore(
-	// connectRouter(history)(reducer),
-	reducer,
-    initialState,
-    applyMiddleware(...middleware)
-);
-
-sagaMiddleware.run(rootSaga);
+const store = configureStore({
+	/*initial reducer*/
+});
 
 ReactDOM.render(
     <Provider store={store}>
-        {/* <App history={history} /> */}
-		<App />
+        <ConnectedRouter history={history}>
+      		<>
+			  	<Header />
+				<UserList />
+				<Switch>
+					<Route exact path="/" render={() => (<div>Match</div>)} />
+					<Route render={() => (<div>Miss</div>)} />
+				</Switch>
+      		</>
+    	</ConnectedRouter>
     </Provider>,
     document.getElementById('root')
 );
