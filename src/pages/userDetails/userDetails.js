@@ -7,13 +7,14 @@ import { UserActions } from '../../store';
 
 import TemplateState from '../../components/templateState/templateState';
 import Loader from '../../components/loader/loader';
+import Drawer from '../../components/drawer/drawer';
 
 import { ReactComponent as IconBack } from '../../assets/icons/back.svg';
 import { ReactComponent as IconStar } from '../../assets/icons/star.svg';
 
 import './userDetails.scss';
 
-const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, dataUserDetails, loading, error }) => {
+const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, dataUserDetails, loading, error, changeOrderReposByStars, orderReposByStars }) => {
 	useEffect(() => {
 		apiGetUserByLogin(match.params.login);
 
@@ -29,8 +30,22 @@ const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, d
 	const { avatar_url, name, bio, email, followers, following, repos } = dataUserDetails;
 
 	const openMoreInfoRepo = (repo) => {
-		console.log(repo);
 		window.open(repo.html_url, '_blank');
+	}
+
+	const getReposOrderned = (reposToOrder) => {
+		return reposToOrder.sort((a, b) => {
+			if (orderReposByStars === "ASC") {
+				if (a.stargazers_count > b.stargazers_count) return 1;
+				else if (a.stargazers_count < b.stargazers_count) return -1;
+				return 0;
+			}
+			else {
+				if (a.stargazers_count < b.stargazers_count) return 1;
+				else if (a.stargazers_count > b.stargazers_count) return -1;
+				return 0;
+			}
+		});
 	}
 
 	return (
@@ -56,34 +71,44 @@ const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, d
 			</div>
 
 			<div className="container-repos">
-				<span className="title">Repositórios</span>
+				{(repos && repos.length) ? (
+					<>
+						<span className="title" onClick={() => changeOrderReposByStars()}>Repositórios</span>
 
-				<div className="table-repos">
-					<table>
-						<thead>
-							<tr>
-								<th>Nome</th>
-								<th>Linguagem</th>
-								<th>Estrelas</th>
-							</tr>
-						</thead>
-						<tbody>
-							{repos.map((repo, index) => {
-								return (
-									<tr key={index} onClick={() => openMoreInfoRepo(repo)}>
-										<td className="name">{repo.name}</td>
-										<td className="language">{repo.language}</td>
-										<td className="star">
-											<IconStar />
-											{repo.stargazers_count || 0}
-										</td>
+						<div className="table-repos">
+							<table>
+								<thead>
+									<tr>
+										<th>Nome</th>
+										<th>Linguagem</th>
+										<th>Estrelas</th>
 									</tr>
-								)
-							})}
-						</tbody>
-					</table>
-				</div>
+								</thead>
+								<tbody>
+									{getReposOrderned(repos).map((repo, index) => {
+										return (
+											<tr key={index} onClick={() => openMoreInfoRepo(repo)}>
+												<td className="name">{repo.name}</td>
+												<td className="language">{repo.language}</td>
+												<td className="star">
+													<IconStar />
+													{repo.stargazers_count || 0}
+												</td>
+											</tr>
+										)
+									})}
+								</tbody>
+							</table>
+						</div>
+					</>
+				) : (
+					<div className="not-found-repos">
+						Que pena! <strong>{name}</strong> ainda não tem repositórios
+					</div>
+				)}
 			</div>
+
+			<Drawer />
 		</div>
 	);
 }
@@ -94,7 +119,8 @@ const mapStateToProps = state => {
 	return {
 		dataUserDetails: user.dataUserDetails,
 		loading: user.loading,
-		error: user.error
+		error: user.error,
+		orderReposByStars: user.orderReposByStars
 	};
 };
 

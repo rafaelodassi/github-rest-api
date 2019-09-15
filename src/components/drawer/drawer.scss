@@ -53,9 +53,9 @@
 						flex-grow: 1;
 					}
 
-					i {
+					svg {
 						margin-left: 10px;
-
+						fill: currentColor;
 						&:hover {
 							cursor: pointer;
 							color: darken($font-color, 20%);

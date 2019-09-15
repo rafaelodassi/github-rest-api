@@ -9,6 +9,7 @@ export const { Types, Creators } = createActions({
 	apiGetUserByLogin: ['login'],
 	successGetUserByLogin: [],
 	errorGetUserByLogin: [],
+	changeOrderReposByStars: [],
 	resetDataUserDetails: []
 });
 
@@ -17,6 +18,7 @@ const initialState = {
 	dataUserDetails: null,
 	loading: false,
 	error: false,
+	orderReposByStars: 'DESC'
 };
 
 /*SEARCH USERS*/
@@ -43,6 +45,12 @@ const errorSearchUsers = (state = initialState, action) => ({
 	error: action.err
 });
 
+/*RESET DATA USER LIST*/
+const resetDataUserList = (state = initialState, action) => ({
+	...state,
+	dataUserList: null
+});
+
 /*GET USER BY LOGIN*/
 const apiGetUserByLogin = (state = initialState, action) => {
 	return {
@@ -67,10 +75,10 @@ const errorGetUserByLogin = (state = initialState, action) => ({
 	error: action.err
 });
 
-/*RESET DATA USER LIST*/
-const resetDataUserList = (state = initialState, action) => ({
+/*CHANGE ORDER REPOS BY STARS*/
+const changeOrderReposByStars = (state = initialState, action) => ({
 	...state,
-	dataUserList: null
+	orderReposByStars: state.orderReposByStars === "ASC" ? "DESC" : "ASC"
 });
 
 /*RESET DATA USER DETAILS*/
@@ -83,11 +91,11 @@ export default createReducer(initialState, {
 	[Types.API_SEARCH_USERS]: apiSearchUsers,
 	[Types.SUCCESS_SEARCH_USERS]: successSearchUsers,
 	[Types.ERROR_SEARCH_USERS]: errorSearchUsers,
+	[Types.RESET_DATA_USER_LIST]: resetDataUserList,
 
 	[Types.API_GET_USER_BY_LOGIN]: apiGetUserByLogin,
 	[Types.SUCCESS_GET_USER_BY_LOGIN]: successGetUserByLogin,
 	[Types.ERROR_GET_USER_BY_LOGIN]: errorGetUserByLogin,
-
-	[Types.RESET_DATA_USER_LIST]: resetDataUserList,
+	[Types.CHANGE_ORDER_REPOS_BY_STARS]: changeOrderReposByStars,
 	[Types.RESET_DATA_USER_DETAILS]: resetDataUserDetails
 });
