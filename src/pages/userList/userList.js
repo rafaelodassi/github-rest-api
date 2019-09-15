@@ -37,7 +37,7 @@ const UserList = ({ apiSearchUsers, resetDataUserList, push, dataUserList, loadi
 			<div className="container-user-list">
 				{dataUserList.map((user, index) => {
 					return (
-						<div key={index} className="card-container" onClick={goToUserDetails.bind(this, user.login)}>
+						<div key={index} className="card-container" onClick={() => goToUserDetails(user.login)}>
 							<div className="card">
 								<div className="avatar" style={{ backgroundImage: `url(${user.avatar_url})` }}></div>
 								<span>{user.login}</span>

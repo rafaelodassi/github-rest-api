@@ -8,8 +8,6 @@ import { UserActions } from '../../store';
 import TemplateState from '../../components/templateState/templateState';
 import Loader from '../../components/loader/loader';
 
-import notFoundState from '../../assets/img/not_found_state.svg';
-
 import './userDetails.scss';
 
 const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, dataUserDetails, loading, error }) => {
@@ -19,18 +17,37 @@ const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, d
 		return () => resetDataUserDetails();
 	}, []);
 
-	// if (error)
-	// 	return <TemplateState text={error} type="error" />;
+	if (error)
+		return <TemplateState text={error} type="error" />;
 
-	// if (loading || !data)
-	// 	return <Loader />;
+	if (loading || !dataUserDetails)
+		return <Loader />;
 
-	// if (data.length === 0)
-	// 	return <TemplateState img={notFoundState} text={"Não encontramos ninguém por aqui com o nome xxx"} />;
+	const { avatar_url, bio, email, followers, following, repos } = dataUserDetails;
+
+	const openMoreInfoRepo = (repo) => {
+		console.log(repo);
+	}
 
 	return (
 		<div className="userDetails">
-			<h2 onClick={() => { goBack() }}>go back</h2>
+			{/* <h2 onClick={() => { goBack() }}>go back</h2> */}
+			<div className="container-user-details">
+				<h4>Informações</h4>
+				<span>{avatar_url}</span>
+				<span>{bio}</span>
+				<span>{email || 'sem e-mail'}</span>
+				<span>{followers}</span>
+				<span>{following}</span>
+
+				<h4>Repos</h4>
+				{repos.map((repo, index) => {
+					return (
+						<span key={index} onClick={() => openMoreInfoRepo(repo)}>{repo.name} - {repo.stargazers_count}</span>
+					)
+				})}
+			</div>
+
 		</div>
 	);
 }

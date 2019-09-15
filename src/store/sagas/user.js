@@ -40,13 +40,22 @@ function getUserByLoginApi(login) {
 	return Http.get(`/users/${login}`);
 }
 
+/*GET REPOS BY LOGIN*/
+function getReposByLoginApi(reposUrl) {
+	return Http.get(reposUrl);
+}
+
 function* getUserByLogin(action) {
     try {
-        const response = yield call(getUserByLoginApi.bind(this, action.login));
+		const responseUser = yield call(getUserByLoginApi.bind(this, action.login));
+		const responseRepos = yield call(getReposByLoginApi.bind(this, responseUser.data.repos_url));
 
         yield put({
             type: UserTypes.SUCCESS_GET_USER_BY_LOGIN,
-            response: response.data
+            response: {
+				...responseUser.data,
+				repos: responseRepos.data || []
+			}
         });
     }
     catch (err) {

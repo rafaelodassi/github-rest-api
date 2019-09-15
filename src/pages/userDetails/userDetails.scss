@@ -1,40 +1,9 @@
 @import "../../variables";
 
-.userList {
-	.container-user-list {
-		display: flex;
-		flex-wrap: wrap;
-		padding: 10px;
-
-		.card-container {
-			padding: 10px;
-
-			.card {
-				min-width: 200px;
-				min-height: 220px;
-				background: #fff;
-				border-radius: 5px;
-				padding: 15px;
-
-				&:hover {
-					cursor: pointer;
-					box-shadow: 0 3px 6px rgba(0,0,0,0.07), 0 3px 6px rgba(0,0,0,0.07);
-				}
-
-				.avatar {
-					border-radius: 50%;
-					width: 100px;
-					height: 100px;
-					background: no-repeat center center;
-					background-size: contain;
-					margin: 0 auto;
-				}
-
-				& > span {
-					display: block;
-					text-align: center;
-				}
-			}
+.userDetails {
+	.container-user-details {
+		& > span {
+			display: block;
 		}
 	}
 }

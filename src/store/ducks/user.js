@@ -4,12 +4,11 @@ export const { Types, Creators } = createActions({
 	apiSearchUsers: ['params'],
 	successSearchUsers: [],
 	errorSearchUsers: [],
+	resetDataUserList: [],
 
 	apiGetUserByLogin: ['login'],
 	successGetUserByLogin: [],
 	errorGetUserByLogin: [],
-
-	resetDataUserList: [],
 	resetDataUserDetails: []
 });
 
