@@ -1,44 +1,63 @@
 @import "../../variables";
 
 .userList {
-	.container-user-list {
-		margin-top: 32px;
-		flex-wrap: wrap;
-		display: flex;
-		margin-left: 56px;
-		margin-right: 56px;
-		justify-content: space-around;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 
-		.card-container {
-			.card {
-				height: auto;
-				width: 320px;
-				background-color: #fff;
-				border-radius: 12px;
-				overflow: auto;
-				box-shadow: 0 2px 8px rgba(81, 86, 229, .1);
-				margin-left: 16px;
-				margin-right: 16px;
-				margin-bottom: 24px;
+	.container-header-section {
+		text-align: center;
+		margin: 0 56px;
 
-				&:hover {
-					cursor: pointer;
-					box-shadow: 0 3px 6px rgba(0,0,0,0.07), 0 3px 6px rgba(0,0,0,0.07);
+		img {
+			margin-top: 24px;
+		}
+
+		.title {
+			display: block;
+			margin: 8px 24px;
+			margin-bottom: 0;
+			color: $font-color-dark;
+			font-size: 32px;
+			font-weight: 500;
+		}
+
+		.sub-title {
+			color: $font-color-ligth;
+			display: block;
+		}
+
+		.container-search-input {
+			width: 320px;
+			position: relative;
+			margin-top: 20px;
+			display: inline-block;
+
+			input {
+				width: 100%;
+				border: none;
+				padding: 5px 20px;
+				padding-right: 40px;
+				height: 48px;
+				position: relative;
+				border-radius: 8px;
+				font-family: $primary-font;
+				color: $font-color;
+				line-height: 1.5;
+				font-size: 16px;
+
+				&:focus {
+					outline: none;
+					box-shadow: 0px 2px 24px rgba(102,118,222,0.1);
 				}
+			}
 
-				.avatar {
-					border-radius: 50%;
-					width: 100px;
-					height: 100px;
-					background: no-repeat center center;
-					background-size: contain;
-					margin: 0 auto;
-				}
-
-				& > span {
-					display: block;
-					text-align: center;
-				}
+			svg {
+				position: absolute;
+				top: 12px;
+				right: 10px;
+				fill: $font-color;
+				cursor: pointer;
 			}
 		}
 	}

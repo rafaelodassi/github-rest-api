@@ -21,10 +21,6 @@ body {
 	margin: 0;
 }
 
-#root {
-	padding-top: 70px;
-}
-
 button {
 	line-height: 1.5;
 	position: relative;
@@ -35,7 +31,7 @@ button {
 	height: 40px;
 	padding: 0 15px;
 	font-family: $primary-font;
-	font-size: 14px;
+	font-size: $font-size-base;
 	border-radius: 4px;
 	color: #fff;
 	background-color: $primary-color;

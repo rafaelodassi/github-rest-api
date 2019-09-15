@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 import configureStore, { history } from './store/configureStore';
 
-import Header from './components/header/header';
 import UserList from './pages/userList/userList';
 import UserDetails from './pages/userDetails/userDetails';
 
@@ -19,7 +18,6 @@ ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
       		<>
-			  	<Header />
 				<Switch>
 					<Route exact path="/" render={props => <UserList match={props.match} />} />
 					<Route path="/user/:login" render={props => <UserDetails match={props.match} />} />
