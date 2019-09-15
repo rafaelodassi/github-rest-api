@@ -8,7 +8,7 @@ import { UserActions } from '../../store';
 import TemplateState from '../../components/templateState/templateState';
 import Loader from '../../components/loader/loader';
 
-import logo from '../../assets/img/logo.png';
+import { ReactComponent as IconBack } from '../../assets/icons/back.svg';
 import { ReactComponent as IconStar } from '../../assets/icons/star.svg';
 
 import './userDetails.scss';
@@ -30,15 +30,21 @@ const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, d
 
 	const openMoreInfoRepo = (repo) => {
 		console.log(repo);
+		window.open(repo.html_url, '_blank');
 	}
 
 	return (
 		<div className="userDetails">
+			<div className="back" onClick={() => goBack()}>
+				<IconBack />
+				<span>Voltar para a busca</span>
+			</div>
+
 			<div className="container-header-section">
 				<div className="container-avatar">
 					<div className="avatar" style={{ backgroundImage: `url(${avatar_url})` }}></div>
 				</div>
-				<span className="name">{name}</span>
+				<span className="name">{name || 'Ops! Sem nome'}</span>
 
 				<div className="container-email-follow">
 					<span className="email">{email || 'E-mail privado'}</span>
@@ -49,31 +55,35 @@ const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, d
 				<span className="bio">{bio || <><strong>{name}</strong> ainda não escreveu nada sobre ele :(</>}</span>
 			</div>
 
-			{/* <h2 onClick={() => { goBack() }}>go back</h2> */}
-
-			<h1>Repositórios</h1>
-
 			<div className="container-repos">
-				{repos.map((repo, index) => {
-					return (
-						<div key={index} className="card-container">
-							<div className={`card slideUp ${repo.language ? `language-${repo.language.toLowerCase()}` : ""}`} onClick={() => openMoreInfoRepo(repo)}>
-								<span className="name">{repo.name}</span>
-								<span className="description">{repo.description}</span>
+				<span className="title">Repositórios</span>
 
-								<div className="container-info">
-									{repo.language && <span className="language">{repo.language}</span>}
-									<span className="star">
-										<IconStar />
-										{repo.stargazers_count || 0}
-									</span>
-								</div>
-							</div>
-						</div>
-					)
-				})}
+				<div className="table-repos">
+					<table>
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>Linguagem</th>
+								<th>Estrelas</th>
+							</tr>
+						</thead>
+						<tbody>
+							{repos.map((repo, index) => {
+								return (
+									<tr key={index} onClick={() => openMoreInfoRepo(repo)}>
+										<td className="name">{repo.name}</td>
+										<td className="language">{repo.language}</td>
+										<td className="star">
+											<IconStar />
+											{repo.stargazers_count || 0}
+										</td>
+									</tr>
+								)
+							})}
+						</tbody>
+					</table>
+				</div>
 			</div>
-
 		</div>
 	);
 }

@@ -11,23 +11,23 @@
 	.card-container {
 		.card {
 			height: auto;
-			background-color: #fff;
 			border-radius: 12px;
 			overflow: auto;
-			box-shadow: 0 2px 8px rgba(81, 86, 229, .1);
 			margin-left: 16px;
 			margin-right: 16px;
 			margin-bottom: 24px;
 
 			&:hover {
 				cursor: pointer;
-				box-shadow: 0px 2px 32px rgba(81, 86, 229, 0.1);
+				background-color: #fff;
+				box-shadow: 0 2px 8px rgba(81, 86, 229, .1);
 				position: relative;
 				top: -5px;
 			}
 
 			.container-avatar {
 				padding: 15px;
+				padding-bottom: 10px;
 
 				.avatar {
 					border-radius: 50%;
@@ -36,6 +36,7 @@
 					background: no-repeat center center;
 					background-size: contain;
 					margin: 0 auto;
+					box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
 				}
 			}
 
@@ -52,18 +53,3 @@
 		}
 	}
 }
-
-// @media screen and (max-width: 1024px) and (min-width: 375px) {
-// 	.userList {
-// 		.container-user-list {
-// 			justify-content: space-around;
-// 			margin: auto;
-
-// 			.card-container {
-// 				.card {
-// 					margin-bottom: 24px;
-// 				}
-// 			}
-// 		}
-// 	}
-// }

@@ -1,0 +1,91 @@
+@import "../../variables";
+
+.drawer {
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 2050;
+	display: none;
+
+	.drawer-mask {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 1;
+		background-color: rgba(0,0,0,0.45);
+	}
+
+	.drawer-wrapper {
+		width: 256px;
+		height: 100%;
+		-webkit-box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+		box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+		position: absolute;
+		right: 0;
+
+		.drawer-content {
+			position: relative;
+			z-index: 1;
+			background-color: #fff;
+			border: 0;
+			width: 100%;
+			height: 100%;
+
+			.drawer-body {
+				overflow: auto;
+				height: 100%;
+
+				.drawer-content-header {
+					position: relative;
+					padding: 16px 24px;
+					background: #fff;
+					border-bottom: 1px solid #e8e8e8;
+					display: flex;
+					align-items: center;
+
+					.title {
+						font-weight: bold;
+						font-size: 16px;
+						flex-grow: 1;
+					}
+
+					i {
+						margin-left: 10px;
+
+						&:hover {
+							cursor: pointer;
+							color: darken($font-color, 20%);
+						}
+					}
+				}
+
+				.drawer-content-body {
+					padding: 24px;
+					word-wrap: break-word;
+
+					.container-info {
+						margin-bottom: 20px;
+
+						&:last-child {
+							margin: 0;
+						}
+
+						.title {
+							font-weight: 500;
+							display: block;
+							font-size: 15px;
+						}
+
+						.text {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+}
