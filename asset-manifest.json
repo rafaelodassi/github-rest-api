@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.ed17a9c0.chunk.css",
-    "main.js": "/static/js/main.7127cc71.chunk.js",
-    "main.js.map": "/static/js/main.7127cc71.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.5a7037c1.js",
-    "runtime~main.js.map": "/static/js/runtime~main.5a7037c1.js.map",
-    "static/js/2.5d3c9d83.chunk.js": "/static/js/2.5d3c9d83.chunk.js",
-    "static/js/2.5d3c9d83.chunk.js.map": "/static/js/2.5d3c9d83.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.8276c6b891fd532fa1a11a3e0f54bbd2.js": "/precache-manifest.8276c6b891fd532fa1a11a3e0f54bbd2.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.ed17a9c0.chunk.css.map": "/static/css/main.ed17a9c0.chunk.css.map",
-    "static/media/close.777b93c6.svg": "/static/media/close.777b93c6.svg",
-    "static/media/error_state.svg": "/static/media/error_state.8bab321d.svg",
-    "static/media/not_found_state.svg": "/static/media/not_found_state.6911cdb4.svg",
-    "static/media/star.d0367478.svg": "/static/media/star.d0367478.svg"
+    "main.css": "/github-rest-api/static/css/main.ed17a9c0.chunk.css",
+    "main.js": "/github-rest-api/static/js/main.7127cc71.chunk.js",
+    "main.js.map": "/github-rest-api/static/js/main.7127cc71.chunk.js.map",
+    "runtime~main.js": "/github-rest-api/static/js/runtime~main.d3e002b4.js",
+    "runtime~main.js.map": "/github-rest-api/static/js/runtime~main.d3e002b4.js.map",
+    "static/js/2.5d3c9d83.chunk.js": "/github-rest-api/static/js/2.5d3c9d83.chunk.js",
+    "static/js/2.5d3c9d83.chunk.js.map": "/github-rest-api/static/js/2.5d3c9d83.chunk.js.map",
+    "index.html": "/github-rest-api/index.html",
+    "precache-manifest.7b7ae5e0071940bf34e4232aa7f259aa.js": "/github-rest-api/precache-manifest.7b7ae5e0071940bf34e4232aa7f259aa.js",
+    "service-worker.js": "/github-rest-api/service-worker.js",
+    "static/css/main.ed17a9c0.chunk.css.map": "/github-rest-api/static/css/main.ed17a9c0.chunk.css.map",
+    "static/media/close.777b93c6.svg": "/github-rest-api/static/media/close.777b93c6.svg",
+    "static/media/error_state.svg": "/github-rest-api/static/media/error_state.8bab321d.svg",
+    "static/media/not_found_state.svg": "/github-rest-api/static/media/not_found_state.6911cdb4.svg",
+    "static/media/star.d0367478.svg": "/github-rest-api/static/media/star.d0367478.svg"
   }
 }
