@@ -30,11 +30,14 @@ const ItemList = ({ push, dataUserList, loading, error }) => {
 		<div className="itemList">
 			{dataUserList.map((user, index) => {
 				return (
-					<div key={index} className="card-container" onClick={() => goToUserDetails(user.login)}>
-						<div className="card">
-							<div className="avatar" style={{ backgroundImage: `url(${user.avatar_url})` }}></div>
-							<span>{user.login}</span>
-							<span>{user.login}</span>
+					<div key={index} className="card-container">
+						<div className="card slideUp" onClick={() => goToUserDetails(user.login)}>
+							<div className="container-avatar">
+								<div className="avatar" style={{ backgroundImage: `url(${user.avatar_url})` }}></div>
+							</div>
+							<div className="container-info">
+								<span>{user.login}</span>
+							</div>
 						</div>
 					</div>
 				)

@@ -6,12 +6,11 @@
 	display: flex;
 	margin-left: 56px;
 	margin-right: 56px;
-	justify-content: space-around;
+	justify-content: center;
 
 	.card-container {
 		.card {
 			height: auto;
-			width: 320px;
 			background-color: #fff;
 			border-radius: 12px;
 			overflow: auto;
@@ -27,19 +26,44 @@
 				top: -5px;
 			}
 
-			.avatar {
-				border-radius: 50%;
-				width: 100px;
-				height: 100px;
-				background: no-repeat center center;
-				background-size: contain;
-				margin: 0 auto;
+			.container-avatar {
+				padding: 15px;
+
+				.avatar {
+					border-radius: 50%;
+					width: 100px;
+					height: 100px;
+					background: no-repeat center center;
+					background-size: contain;
+					margin: 0 auto;
+				}
 			}
 
-			& > span {
-				display: block;
-				text-align: center;
+			.container-info {
+				padding: 0 15px 15px 15px;
+
+				& > span {
+					text-align: center;
+					display: block;
+					font-size: 16px;
+					font-weight: 500;
+				}
 			}
 		}
 	}
 }
+
+// @media screen and (max-width: 1024px) and (min-width: 375px) {
+// 	.userList {
+// 		.container-user-list {
+// 			justify-content: space-around;
+// 			margin: auto;
+
+// 			.card-container {
+// 				.card {
+// 					margin-bottom: 24px;
+// 				}
+// 			}
+// 		}
+// 	}
+// }

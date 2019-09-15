@@ -1,9 +1,136 @@
 @import "../../variables";
 
 .userDetails {
-	.container-user-details {
-		& > span {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.container-header-section {
+		text-align: center;
+		margin: 0 56px;
+
+		.container-avatar {
+			margin-top: 24px;
+
+			.avatar {
+				box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15);
+				border-radius: 50%;
+				width: 100px;
+				height: 100px;
+				background: no-repeat center center;
+				background-size: contain;
+				margin: 0 auto;
+			}
+		}
+
+		.name {
 			display: block;
+			margin-top: 8px;
+			color: $font-color-dark;
+			font-size: 32px;
+			font-weight: 500;
+		}
+
+		.bio {
+			color: $font-color-ligth;
+			display: block;
+			margin-top: 10px;
+		}
+
+		.container-email-follow {
+			display: flex;
+			align-items: center;
+			margin-top: 10px;
+
+			& > span {
+				flex-grow: 1;
+				text-align: center;
+				padding: 5px 10px;
+				margin: 0 5px;
+				color: #fff;
+				border-radius: 4px;
+				font-weight: 500;
+			}
+
+			.email {
+				background: $secondary-color;
+			}
+
+			.followers, .following {
+				background: $primary-color;
+			}
+		}
+	}
+
+	h1 {
+		margin-top: 32px;
+		font-size: 28px;
+	}
+
+	.container-repos {
+		flex-wrap: wrap;
+		display: flex;
+		margin-left: 56px;
+		margin-right: 56px;
+		justify-content: center;
+
+		.card-container {
+			.card {
+				max-width: 300px;
+				height: auto;
+				background-color: #fff;
+				border-radius: 12px;
+				overflow: auto;
+				box-shadow: 0 2px 8px rgba(81, 86, 229, .1);
+				margin-left: 16px;
+				margin-right: 16px;
+				margin-bottom: 24px;
+				padding: 12px 15px;
+
+				&:hover {
+					cursor: pointer;
+					box-shadow: 0px 2px 32px rgba(81, 86, 229, 0.1);
+					position: relative;
+					top: -5px;
+				}
+
+				.name {
+					font-size: 16px;
+					font-weight: 500;
+					display: block;
+				}
+
+				.description {
+					color: $font-color-ligth;
+					font-size: 13px;
+					display: block;
+				}
+
+				.container-info {
+					display: flex;
+					align-items: center;
+					margin-top: 5px;
+
+					.language {
+						flex-grow: 1;
+						color: $secondary-color;
+						font-size: 13px;
+						margin-right: 20px;
+					}
+
+					.star {
+						display: flex;
+						align-items: center;
+						color: #fadb14;
+
+						svg {
+							fill: currentColor;
+							margin-right: 3px;
+						}
+					}
+				}
+			}
 		}
 	}
 }

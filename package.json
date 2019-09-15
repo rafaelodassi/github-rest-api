@@ -7,6 +7,7 @@
 		"connected-react-router": "^6.5.2",
 		"history": "^4.10.1",
 		"react": "^16.9.0",
+		"react-app-polyfill": "^1.0.2",
 		"react-dom": "^16.9.0",
 		"react-redux": "^7.1.1",
 		"react-router-dom": "^5.0.1",
@@ -16,10 +17,11 @@
 		"reduxsauce": "^1.1.0"
 	},
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
+		"start": "cross-env PUBLIC_URL= react-scripts start",
+		"build": "cross-env PUBLIC_URL=/github-rest-api react-scripts build",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"deploy": "gh-pages -d build"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
@@ -37,6 +39,8 @@
 		]
 	},
 	"devDependencies": {
+		"cross-env": "^5.2.1",
+		"gh-pages": "^2.1.1",
 		"node-sass": "^4.12.0"
 	}
 }

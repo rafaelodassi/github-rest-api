@@ -6,7 +6,9 @@ import { routerMiddleware } from 'connected-react-router';
 import createRootReducer from './ducks';
 import rootSaga from './sagas';
 
-export const history = createBrowserHistory()
+export const history = createBrowserHistory({
+	basename: process.env.PUBLIC_URL
+});
 
 const sagaMiddleware = createSagaMiddleware();
 
