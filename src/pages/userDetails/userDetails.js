@@ -48,6 +48,10 @@ const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, d
 		});
 	}
 
+	const getLabelOrder = () => {
+		return orderReposByStars === "ASC" ? "Crescente" : "Decrescente";
+	}
+
 	return (
 		<div className="userDetails">
 			<div className="back" onClick={() => goBack()}>
@@ -73,7 +77,14 @@ const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, d
 			<div className="container-repos">
 				{(repos && repos.length) ? (
 					<>
-						<span className="title" onClick={() => changeOrderReposByStars()}>Repositórios</span>
+						<div className="header-repos">
+							<span className="title">Repositórios</span>
+							<div className="order">
+								<div className="bt-change-order" onClick={() => changeOrderReposByStars()} title={`Repositórios ordenados por estrelas (${getLabelOrder().toLowerCase()})`}>
+									{getLabelOrder()}<IconStar />
+								</div>
+							</div>
+						</div>
 
 						<div className="table-repos">
 							<table>

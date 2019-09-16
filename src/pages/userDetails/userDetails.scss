@@ -95,12 +95,42 @@
 		margin-bottom: 32px;
 		margin-top: 32px;
 
-		.title {
+		.header-repos {
+			display: flex;
+			align-items: center;
 			padding: 20px 25px;
 			padding-bottom: 0;
-			display: block;
-			font-weight: 500;
-			font-size: 24px;
+
+			.title {
+				display: block;
+				font-weight: 500;
+				font-size: 24px;
+				flex-grow: 1;
+			}
+
+			.order {
+				display: flex;
+				align-items: center;
+				margin-left: 10px;
+
+				.bt-change-order {
+					display: flex;
+					align-items: center;
+					font-weight: 500;
+					background-color: #fff;
+					color: $primary-color;
+					cursor: pointer;
+
+					&:hover {
+						color: darken($primary-color, 3%);
+					}
+
+					svg {
+						fill: currentColor;
+						margin-left: 5px;
+					}
+				}
+			}
 		}
 
 		table {
