@@ -10,7 +10,9 @@ export const { Types, Creators } = createActions({
 	successGetUserByLogin: [],
 	errorGetUserByLogin: [],
 	changeOrderReposByStars: [],
-	resetDataUserDetails: []
+	resetDataUserDetails: [],
+
+	toggleDrawerRepo: ['repo']
 });
 
 const initialState = {
@@ -18,7 +20,8 @@ const initialState = {
 	dataUserDetails: null,
 	loading: false,
 	error: false,
-	orderReposByStars: 'DESC'
+	orderReposByStars: 'DESC',
+	drawerRepoDetails: {}
 };
 
 /*SEARCH USERS*/
@@ -84,7 +87,14 @@ const changeOrderReposByStars = (state = initialState, action) => ({
 /*RESET DATA USER DETAILS*/
 const resetDataUserDetails = (state = initialState, action) => ({
 	...state,
-	dataUserDetails: null
+	dataUserDetails: null,
+	orderReposByStars: "DESC"
+});
+
+/*RESET DATA USER DETAILS*/
+const toggleDrawerRepo = (state = initialState, action) => ({
+	...state,
+	drawerRepoDetails: action.repo
 });
 
 export default createReducer(initialState, {
@@ -97,5 +107,7 @@ export default createReducer(initialState, {
 	[Types.SUCCESS_GET_USER_BY_LOGIN]: successGetUserByLogin,
 	[Types.ERROR_GET_USER_BY_LOGIN]: errorGetUserByLogin,
 	[Types.CHANGE_ORDER_REPOS_BY_STARS]: changeOrderReposByStars,
-	[Types.RESET_DATA_USER_DETAILS]: resetDataUserDetails
+	[Types.RESET_DATA_USER_DETAILS]: resetDataUserDetails,
+
+	[Types.TOGGLE_DRAWER_REPO]: toggleDrawerRepo
 });

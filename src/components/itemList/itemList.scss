@@ -17,6 +17,10 @@
 			margin-right: 16px;
 			margin-bottom: 24px;
 
+			&.slideUp {
+				animation: slide-up 0.4s ease-out forwards;
+			}
+
 			&:hover {
 				cursor: pointer;
 				background-color: #fff;
@@ -52,4 +56,15 @@
 			}
 		}
 	}
+}
+
+@keyframes slide-up {
+    0% {
+       transform: translateY(8%);
+       opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
 }

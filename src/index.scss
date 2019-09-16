@@ -42,19 +42,3 @@ button {
 		background-color: darken($primary-color, 3%);
 	}
 }
-
-/*ANIMATIONS*/
-.slideUp {
-	animation: slide-up 0.4s ease-out forwards;
-}
-
-@keyframes slide-up {
-    0% {
-       transform: translateY(8%);
-       opacity: 0;
-    }
-    100% {
-        transform: translateY(0px);
-        opacity: 1;
-    }
-}

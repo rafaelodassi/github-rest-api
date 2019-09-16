@@ -7,14 +7,14 @@ import { UserActions } from '../../store';
 
 import TemplateState from '../../components/templateState/templateState';
 import Loader from '../../components/loader/loader';
-import Drawer from '../../components/drawer/drawer';
+import DrawerRepo from '../../components/drawerRepo/drawerRepo';
 
 import { ReactComponent as IconBack } from '../../assets/icons/back.svg';
 import { ReactComponent as IconStar } from '../../assets/icons/star.svg';
 
 import './userDetails.scss';
 
-const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, dataUserDetails, loading, error, changeOrderReposByStars, orderReposByStars }) => {
+const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, dataUserDetails, loading, error, changeOrderReposByStars, orderReposByStars, toggleDrawerRepo }) => {
 	useEffect(() => {
 		apiGetUserByLogin(match.params.login);
 
@@ -28,10 +28,6 @@ const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, d
 		return <Loader />;
 
 	const { avatar_url, name, bio, email, followers, following, repos } = dataUserDetails;
-
-	const openMoreInfoRepo = (repo) => {
-		window.open(repo.html_url, '_blank');
-	}
 
 	const getReposOrderned = (reposToOrder) => {
 		return reposToOrder.sort((a, b) => {
@@ -98,7 +94,7 @@ const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, d
 								<tbody>
 									{getReposOrderned(repos).map((repo, index) => {
 										return (
-											<tr key={index} onClick={() => openMoreInfoRepo(repo)}>
+											<tr key={index} onClick={() => toggleDrawerRepo(repo)}>
 												<td className="name">{repo.name}</td>
 												<td className="language">{repo.language}</td>
 												<td className="star">
@@ -119,7 +115,7 @@ const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, d
 				)}
 			</div>
 
-			<Drawer />
+			<DrawerRepo />
 		</div>
 	);
 }

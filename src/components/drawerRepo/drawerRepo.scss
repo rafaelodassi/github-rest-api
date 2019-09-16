@@ -1,6 +1,6 @@
 @import "../../variables";
 
-.drawer {
+.drawerRepo {
 	top: 0;
 	right: 0;
 	width: 100%;
@@ -17,15 +17,31 @@
 		height: 100%;
 		opacity: 1;
 		background-color: rgba(0,0,0,0.45);
+
+		&.fadeOut {
+			animation: fade-out 0.3s ease-out forwards;
+		}
+
+		&.fadeIn {
+			animation: fade-in 0.3s ease-out forwards;
+		}
 	}
 
 	.drawer-wrapper {
-		width: 256px;
+		width: 360px;
 		height: 100%;
 		-webkit-box-shadow: -2px 0 8px rgba(0,0,0,0.15);
 		box-shadow: -2px 0 8px rgba(0,0,0,0.15);
 		position: absolute;
 		right: 0;
+
+		&.slideLeft {
+			animation: slide-left 0.3s ease-out forwards;
+		}
+
+		&.slideRight {
+			animation: slide-right 0.3s ease-out forwards;
+		}
 
 		.drawer-content {
 			position: relative;
@@ -54,6 +70,7 @@
 					}
 
 					svg {
+						flex-shrink: 0;
 						margin-left: 10px;
 						fill: currentColor;
 						&:hover {
@@ -78,6 +95,22 @@
 							font-weight: 500;
 							display: block;
 							font-size: 15px;
+
+							&.open {
+								display: flex;
+								align-items: center;
+
+								&:hover {
+									color: $primary-color;
+									cursor: pointer;
+								}
+
+								svg {
+									flex-shrink: 0;
+									fill: currentColor;
+									margin-left: 5px;
+								}
+							}
 						}
 
 						.text {
@@ -86,6 +119,54 @@
 					}
 				}
 			}
+		}
+	}
+}
+
+@keyframes slide-left {
+    0% {
+       transform: translateX(100%);
+       opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-right {
+    0% {
+       transform: translateX(0%);
+       opacity: 1;
+    }
+    100% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+       opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+       opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+	.drawerRepo {
+		.drawer-wrapper {
+			width: 100%;
 		}
 	}
 }
