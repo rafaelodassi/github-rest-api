@@ -1,23 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a3b54065e00ccd18e9f3d83a4c42ccba",
+    "revision": "d0d4f41370cc8739730a8c4902043e3e",
     "url": "/github-rest-api/index.html"
   },
   {
-    "revision": "105834a260db39546092",
-    "url": "/github-rest-api/static/css/main.ab01eb6f.chunk.css"
+    "revision": "1358538c1f4af80f5afa",
+    "url": "/github-rest-api/static/css/main.6f5857eb.chunk.css"
   },
   {
-    "revision": "2a01a46db88db8a1104f",
-    "url": "/github-rest-api/static/js/2.acfbbcf1.chunk.js"
+    "revision": "b4749359daef727c57ca",
+    "url": "/github-rest-api/static/js/2.4d6d283a.chunk.js"
   },
   {
-    "revision": "105834a260db39546092",
-    "url": "/github-rest-api/static/js/main.742a1ce5.chunk.js"
+    "revision": "1358538c1f4af80f5afa",
+    "url": "/github-rest-api/static/js/main.37b89479.chunk.js"
   },
   {
     "revision": "3a17d84c03341290b09c",
     "url": "/github-rest-api/static/js/runtime~main.d3e002b4.js"
+  },
+  {
+    "revision": "ac9440512ba56b8f58e72384a30b0cb6",
+    "url": "/github-rest-api/static/media/back.ac944051.svg"
   },
   {
     "revision": "777b93c6d5a7b86081144f8d0d3ca1d8",
