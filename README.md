@@ -63,7 +63,7 @@ npm run build
 npm run deploy
 ```
 
-### Rodar testes
+<!-- ### Rodar testes
 ```sh
 npm run test
-```
+``` -->
