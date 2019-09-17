@@ -10,7 +10,7 @@ function searchUsersApi(params) {
 	if (params)
 		return Http.get(`/search/users?${serialize(params)}`);
 	else
-		return Http.get(`/users`);
+		return Http.get(`/users?per_page=100`);
 }
 
 function* searchUsers(action) {
@@ -42,7 +42,7 @@ function getUserByLoginApi(login) {
 
 /*GET REPOS BY LOGIN*/
 function getReposByLoginApi(reposUrl) {
-	return Http.get(reposUrl);
+	return Http.get(`${reposUrl}?per_page=100`);
 }
 
 function* getUserByLogin(action) {
