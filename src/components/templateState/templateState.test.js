@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import UserDetails from './userDetails';
+import TemplateState from './templateState';
 
-it('Renderizando o UserDetails corretamente', () => {
+it('Renderizando o TemplateState corretamente', () => {
 	const tree = renderer
-		.create(<UserDetails />)
+		.create(<TemplateState />)
 		.toJSON();
 
 	expect(tree).toMatchSnapshot();

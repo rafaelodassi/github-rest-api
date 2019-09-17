@@ -1,10 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import renderer from 'react-test-renderer';
+import ItemList from './itemList';
 
-import Header from './header';
+it('Renderizando o ItemList corretamente', () => {
+	const tree = renderer
+		.create(<ItemList />)
+		.toJSON();
 
-it('renders without crashing', () => {
-	const div = document.createElement('div');
-	ReactDOM.render(<Header />, div);
-	ReactDOM.unmountComponentAtNode(div);
+	expect(tree).toMatchSnapshot();
 });

@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import UserDetails from './userDetails';
+import Loader from './loader';
 
-it('Renderizando o UserDetails corretamente', () => {
+it('Renderizando o Loader corretamente', () => {
 	const tree = renderer
-		.create(<UserDetails />)
+		.create(<Loader />)
 		.toJSON();
 
 	expect(tree).toMatchSnapshot();

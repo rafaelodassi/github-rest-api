@@ -1,10 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import renderer from 'react-test-renderer';
+import UserList from './userList';
 
-import Header from './header';
+it('Renderizando o UserList corretamente', () => {
+	const tree = renderer
+		.create(<UserList />)
+		.toJSON();
 
-it('renders without crashing', () => {
-	const div = document.createElement('div');
-	ReactDOM.render(<Header />, div);
-	ReactDOM.unmountComponentAtNode(div);
+	expect(tree).toMatchSnapshot();
 });

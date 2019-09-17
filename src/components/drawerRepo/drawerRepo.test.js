@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import UserDetails from './userDetails';
+import DrawerRepo from './drawerRepo';
 
-it('Renderizando o UserDetails corretamente', () => {
+it('Renderizando o DrawerRepo corretamente', () => {
 	const tree = renderer
-		.create(<UserDetails />)
+		.create(<DrawerRepo />)
 		.toJSON();
 
 	expect(tree).toMatchSnapshot();
