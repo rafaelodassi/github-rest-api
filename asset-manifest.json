@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/github-rest-api/static/css/main.38ff063b.chunk.css",
+    "main.css": "/github-rest-api/static/css/main.0b45091c.chunk.css",
     "main.js": "/github-rest-api/static/js/main.6a67968f.chunk.js",
     "main.js.map": "/github-rest-api/static/js/main.6a67968f.chunk.js.map",
     "runtime~main.js": "/github-rest-api/static/js/runtime~main.d3e002b4.js",
@@ -8,9 +8,9 @@
     "static/js/2.63f77318.chunk.js": "/github-rest-api/static/js/2.63f77318.chunk.js",
     "static/js/2.63f77318.chunk.js.map": "/github-rest-api/static/js/2.63f77318.chunk.js.map",
     "index.html": "/github-rest-api/index.html",
-    "precache-manifest.e62d4e77f34cc296caa483c7872d7b34.js": "/github-rest-api/precache-manifest.e62d4e77f34cc296caa483c7872d7b34.js",
+    "precache-manifest.3ecb37268f4ada51ffeacda335e07cdc.js": "/github-rest-api/precache-manifest.3ecb37268f4ada51ffeacda335e07cdc.js",
     "service-worker.js": "/github-rest-api/service-worker.js",
-    "static/css/main.38ff063b.chunk.css.map": "/github-rest-api/static/css/main.38ff063b.chunk.css.map",
+    "static/css/main.0b45091c.chunk.css.map": "/github-rest-api/static/css/main.0b45091c.chunk.css.map",
     "static/media/arrow_drop_down.ebe1c3a6.svg": "/github-rest-api/static/media/arrow_drop_down.ebe1c3a6.svg",
     "static/media/arrow_drop_up.4bff7167.svg": "/github-rest-api/static/media/arrow_drop_up.4bff7167.svg",
     "static/media/back.ac944051.svg": "/github-rest-api/static/media/back.ac944051.svg",
