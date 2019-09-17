@@ -156,8 +156,13 @@
 					}
 
 					svg {
+						flex-shrink: 0;
 						fill: currentColor;
 						margin-left: 5px;
+
+						&.arrow {
+							margin: 0;
+						}
 					}
 				}
 			}
@@ -223,6 +228,22 @@
 			padding: 20px 0;
 			text-align: center;
 			margin: 65px 0;
+		}
+	}
+}
+
+@media screen and (max-width: 420px) {
+	.userDetails {
+		.container-repos {
+			.header-repos {
+				.order {
+					.bt-change-order {
+						& > span {
+							display: none;
+						}
+					}
+				}
+			}
 		}
 	}
 }

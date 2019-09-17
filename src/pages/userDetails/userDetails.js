@@ -13,6 +13,8 @@ import DrawerRepo from '../../components/drawerRepo/drawerRepo';
 
 import { ReactComponent as IconBack } from '../../assets/icons/back.svg';
 import { ReactComponent as IconStar } from '../../assets/icons/star.svg';
+import { ReactComponent as IconArrowDropDown } from '../../assets/icons/arrow_drop_down.svg';
+import { ReactComponent as IconArrowDropUp } from '../../assets/icons/arrow_drop_up.svg';
 
 import './userDetails.scss';
 
@@ -64,7 +66,7 @@ const UserDetails = (props) => {
 	}
 
 	const getLabelOrder = () => {
-		return orderReposByStars === "ASC" ? "Crescente" : "Decrescente";
+		return `Ordenação ${orderReposByStars === "ASC" ? "crescente" : "decrescente"}`;
 	}
 
 	return (
@@ -98,7 +100,14 @@ const UserDetails = (props) => {
 							<span className="title">Repositórios</span>
 							<div className="order">
 								<div className="bt-change-order" onClick={() => changeOrderReposByStars()} title={`Repositórios ordenados por estrelas (${getLabelOrder().toLowerCase()})`}>
-									{getLabelOrder()}<IconStar />
+									<span>{getLabelOrder()}</span>
+									<IconStar className="star" />
+
+									{orderReposByStars === "DESC" ? (
+										<IconArrowDropDown className="arrow" />
+									) : (
+										<IconArrowDropUp className="arrow" />
+									)}
 								</div>
 							</div>
 						</div>
