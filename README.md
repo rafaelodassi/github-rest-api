@@ -33,9 +33,6 @@ Utilização do EditorConfig para manter uma padronização na formatação dos 
 ### axios
 Cliente HTTP baseado em promise para auxiliar na chamada das rotas de API
 
-### Jest
-Utilização do Jest para gerenciar a cobertura de testes unitários nos componentes
-
 ## Navegadores homologados
 - Google Chrome;
 - Mozilla Firefox;
