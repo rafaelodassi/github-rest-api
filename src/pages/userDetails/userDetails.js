@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { goBack } from 'connected-react-router';
 
-import { UserActions } from '../../store';
+import { UserActions, RepoActions } from '../../store';
 
 import TemplateState from '../../components/templateState/templateState';
 import Loader from '../../components/loader/loader';
@@ -14,11 +14,28 @@ import { ReactComponent as IconStar } from '../../assets/icons/star.svg';
 
 import './userDetails.scss';
 
-const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, dataUserDetails, loading, error, changeOrderReposByStars, orderReposByStars, toggleDrawerRepo }) => {
+const UserDetails = (props) => {
+	const {
+		match,
+		apiGetUserByLogin,
+		resetDataUserDetails,
+		goBack,
+		dataUserDetails,
+		loading,
+		error,
+		changeOrderReposByStars,
+		orderReposByStars,
+		toggleDrawerRepo,
+		resetOrderReposByStar
+	} = props;
+
 	useEffect(() => {
 		apiGetUserByLogin(match.params.login);
 
-		return () => resetDataUserDetails();
+		return () => {
+			resetDataUserDetails();
+			resetOrderReposByStar();
+		}
 	}, []);
 
 	if (error)
@@ -121,16 +138,16 @@ const UserDetails = ({ match, apiGetUserByLogin, resetDataUserDetails, goBack, d
 }
 
 const mapStateToProps = state => {
-	const { user } = state;
+	const { user, repo } = state;
 
 	return {
 		dataUserDetails: user.dataUserDetails,
 		loading: user.loading,
 		error: user.error,
-		orderReposByStars: user.orderReposByStars
+		orderReposByStars: repo.orderReposByStars
 	};
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({ ...UserActions, goBack }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ ...UserActions, ...RepoActions, goBack }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserDetails);

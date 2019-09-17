@@ -2,12 +2,17 @@ import React, { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { UserActions } from '../../store';
+import moment from 'moment';
+import 'moment/locale/pt-br';
+
+import { RepoActions } from '../../store';
 
 import { ReactComponent as IconClose } from '../../assets/icons/close.svg';
 import { ReactComponent as IconOpenInNew } from '../../assets/icons/open_in_new.svg';
 
 import './drawerRepo.scss';
+
+moment.locale("pt-br");
 
 const DrawerRepo = ({ drawerRepoDetails, toggleDrawerRepo }) => {
 	const getRepoLength = () => {
@@ -69,8 +74,12 @@ const DrawerRepo = ({ drawerRepoDetails, toggleDrawerRepo }) => {
 								</div>
 							}
 							<div className="container-info">
-								<span className="title">Issues abertas</span>
+								<span className="title">Problemas abertos</span>
 								<span className="text">{drawerRepoDetails.open_issues_count}</span>
+							</div>
+							<div className="container-info">
+								<span className="title">Criado em</span>
+								<span className="text">{moment(drawerRepoDetails.created_at || "").format('llll')}</span>
 							</div>
 							<div className="container-info">
 								<span className="title open" onClick={openExternalRepo}>Abrir repositório no GitHub<IconOpenInNew /></span>
@@ -84,13 +93,13 @@ const DrawerRepo = ({ drawerRepoDetails, toggleDrawerRepo }) => {
 }
 
 const mapStateToProps = state => {
-	const { user } = state;
+	const { repo } = state;
 
 	return {
-		drawerRepoDetails: user.drawerRepoDetails
+		drawerRepoDetails: repo.drawerRepoDetails
 	};
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators(UserActions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(RepoActions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(DrawerRepo);

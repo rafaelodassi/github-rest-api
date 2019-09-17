@@ -12,7 +12,11 @@ import notFoundState from '../../assets/img/not_found_state.svg';
 
 import './itemList.scss';
 
-const ItemList = ({ push, dataUserList, loading, error }) => {
+const ItemList = ({ push, resetDataUserList, dataUserList, loading, error }) => {
+	useEffect(() => {
+		return () => resetDataUserList();
+	}, []);
+
 	const goToUserDetails = (userLogin) => {
 		push(`/user/${userLogin}`);
 	}
