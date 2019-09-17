@@ -1,10 +1,16 @@
 # GitHub REST API
 Projeto que utiliza métodos da REST API do GitHub
 
+## Link de publicação do projeto
+[https://rafaelodassi.github.io/github-rest-api](https://rafaelodassi.github.io/github-rest-api)
+
 ## Principais tecnologias e ferramentas utilizadas
 
 ### ReactJS
 Utilização do ReactJS (com HOOKS) na componentização de elementos DOM e controle de estado na interação do usuário com as telas
+
+### React Router
+Utilização do React Router para gerenciar as rotas virtuais de navegação, utilizando a técnica SPA (Single Page Application)
 
 ### Redux
 Utilização do Redux para compartilhar e gerenciar as alterações de estado entre os componentes
@@ -27,8 +33,31 @@ Utilização do EditorConfig para manter uma padronização na formatação dos 
 ### axios
 Cliente HTTP baseado em promise para auxiliar na chamada das rotas de API
 
-## Rotinas
+### Jest
+Utilização do Jest para gerenciar a cobertura de testes unitários nos componentes
+
+## Scripts
+
+### Rodar em modo desenvolvimento
 ```sh
-cd my-app
+git clone git@github.com:rafaelodassi/github-rest-api.git
+cd github-rest-api
+npm install
 npm start
+```
+
+### Gerar build
+```sh
+npm run build
+```
+
+### Fazer deploy no gh-pages do GitHub
+```sh
+npm run build
+npm run deploy
+```
+
+### Rodar testes
+```sh
+npm run test
 ```
