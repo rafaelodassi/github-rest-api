@@ -5,6 +5,8 @@ import { goBack } from 'connected-react-router';
 
 import { UserActions, RepoActions } from '../../store';
 
+import bgHeader from '../../assets/img/bg-header.jpg';
+
 import TemplateState from '../../components/templateState/templateState';
 import Loader from '../../components/loader/loader';
 import DrawerRepo from '../../components/drawerRepo/drawerRepo';
@@ -72,16 +74,18 @@ const UserDetails = (props) => {
 				<span>Voltar para a busca</span>
 			</div>
 
-			<div className="container-header-section">
-				<div className="container-avatar">
-					<div className="avatar" style={{ backgroundImage: `url(${avatar_url})` }}></div>
-				</div>
-				<span className="name">{name || 'Ops! Sem nome'}</span>
+			<div className="container-header-section" style={{ backgroundImage: `url(${bgHeader})` }}>
+				<div className="section-info">
+					<div className="container-avatar">
+						<div className="avatar" style={{ backgroundImage: `url(${avatar_url})` }}></div>
+					</div>
 
-				<div className="container-email-follow">
-					<span className="email">{email || 'E-mail privado'}</span>
-					<span className="followers">Seguidores: {followers || 0}</span>
-					<span className="following">Seguindo: {following || 0}</span>
+					<div className="container-info">
+						<span className="name">{name || 'Ops! Sem nome'}</span>
+						<div className="email"><span>{email || 'E-mail privado'}</span></div>
+						<span className="followers">Seguidores: <strong>{followers || 0}</strong></span>
+						<span className="following">Seguindo: <strong>{following || 0}</strong></span>
+					</div>
 				</div>
 
 				<span className="bio">{bio || <><strong>{name}</strong> ainda não escreveu nada sobre ele :(</>}</span>

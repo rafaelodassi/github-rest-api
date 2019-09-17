@@ -12,7 +12,7 @@ import { ReactComponent as IconClose } from '../../assets/icons/close.svg';
 
 import './userList.scss';
 
-const UserList = ({ apiSearchUsers, resetDataUserList }) => {
+const UserList = ({ apiSearchUsers }) => {
 	const [valueSearch, setValueSearch] = useState("");
 	let inputSearch = null;
 
