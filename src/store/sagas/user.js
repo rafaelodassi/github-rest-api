@@ -31,8 +31,8 @@ function* searchUsers(action) {
 }
 
 export function* searchUsersSaga() {
-	// yield debounce(500, UserTypes.API_SEARCH_USERS, searchUsers);
-	yield takeLatest(UserTypes.API_SEARCH_USERS, searchUsers);
+	yield debounce(300, UserTypes.API_SEARCH_USERS, searchUsers);
+	// yield takeLatest(UserTypes.API_SEARCH_USERS, searchUsers);
 }
 
 /*GET USER BY LOGIN*/

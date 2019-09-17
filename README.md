@@ -36,6 +36,12 @@ Cliente HTTP baseado em promise para auxiliar na chamada das rotas de API
 ### Jest
 Utilização do Jest para gerenciar a cobertura de testes unitários nos componentes
 
+## Navegadores homologados
+- Google Chrome;
+- Mozilla Firefox;
+- Microsoft Edge;
+- Internet Explorer 11.
+
 ## Scripts
 
 ### Rodar em modo desenvolvimento
