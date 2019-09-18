@@ -4,6 +4,8 @@ Projeto que utiliza métodos da REST API do GitHub
 ## Link de publicação do projeto
 [https://rafaelodassi.github.io/github-rest-api](https://rafaelodassi.github.io/github-rest-api)
 
+> OBS.: Como o projeto usa React Router para lidar com as rotas virtuais, não é sugerido dar refresh na tela em ambientes não controlados, como é o caso do gh-pages. Pois a aplicação irá perder o contexto da rota, sendo assim, será necessário voltar na url raiz.
+
 ## Principais tecnologias e ferramentas utilizadas
 
 ### ReactJS
