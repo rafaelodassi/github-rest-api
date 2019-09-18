@@ -28,7 +28,7 @@ const ItemList = ({ push, resetDataUserList, dataUserList, loading, error }) => 
 		return <Loader />;
 
 	if (dataUserList.length === 0)
-		return <TemplateState img={notFoundState} text={"Não encontramos ninguém por aqui com o nome xxx"} />;
+		return <TemplateState img={notFoundState} text={"Não encontramos ninguém por aqui com essa busca"} />;
 
 	return (
 		<div className="itemList">
